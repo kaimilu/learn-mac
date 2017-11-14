@@ -1,3 +1,5 @@
+import { plugin } from "mongoose";
+
 class blogpack {
   constructor(options) {
     this.config = options.config || {}
@@ -24,5 +26,24 @@ class blogpack {
     }
     return result
   }
-  
+
+  getBeforeRestfulRoutes() {
+    return this.plugins
+            .filter(plugin => plugin['beforeRestful'])
+            .map(plugin => plugin['beforeRestful'])
+  }
+
+  getAfterRestfulRoutes() {
+    return this.plugins
+            .filter(plugin => plugin['afterRestful'])
+            .map(plugin => plugin['afterRestful'])
+  }
+
+  getBeforeServerStartFuncs() {
+    return this.plugins
+            .filter(plugin => plugin['beforeServerStart'])
+            .map(plugin => plugin['beforeServerStart'])
+  }
 }
+
+module.exports = blogpack
