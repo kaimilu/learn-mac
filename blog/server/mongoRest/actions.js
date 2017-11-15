@@ -88,6 +88,16 @@ module.exports = function generateActions(model) {
       }
     },
 
+    // 创建
+    create: async function(ctx, next) {
+      try {
+        const result = await model.create(ctx.request.body)
+        ctx.status = 201
+        return ctx.body = result
+      } catch (error) {
+        return ctx.body = error
+      }
+    }
    
   }
 
