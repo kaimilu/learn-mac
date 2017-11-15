@@ -2,19 +2,25 @@ let config = require('../conf/config')
 let mongoose = require('mongoose')
 let log = require('../utils/log')
 
+mongoose.Promise = global.Promise
+
 let mongoUrl = `${config.mongoHost}:${config.mongoPort}/${config.mongoDatabase}`
 
-mongoose.connect(mongoUrl)
+// mongoose.connect(mongoUrl)
 
-let db = mongoose.connection
+// let db = mongoose.connection
 
-db.on('error', (err) => {
-  log.error('connect error:　', err)
-})
+// db.on('error', (err) => {
+//   log.error('connect error:　', err)
+// })
 
-db.once('open', () =>　{
-  log.info('MongoDB is Ready')
-})
+// db.once('open', () =>　{
+//   log.info('MongoDB is Ready')
+// })
+mongoose.connect('mongodb://'+ mongoUrl, config.mongoOptions).then(
+  () => { log.info('MongoDB is Ready') } ,
+  err => { log.error('connect error:　', err) } 
+)
 
 const Schema = mongoose.Schema
 // 定义 schema

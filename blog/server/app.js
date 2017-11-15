@@ -1,9 +1,11 @@
+
+
 const log = require('./utils/log')
 const Koa = require('koa')
 const koaRouter = require('koa-router')
 const mongoRest = require('./mongoRest')
-const models = requie('./model/mongo')
-const redis = require('./mondel/redis')
+const models = require('./model/mongo')
+const redis = require('./model/redis')
 const config = require('./conf/config')
 const configName = process.env.NODE_ENV === '"development"' ? 'dev' : 'prod'
 const blogpackConfig = require(`./build/blogpack.${configName}.config`)
@@ -15,7 +17,7 @@ const laosu = global.laosu = new Blogpack(blogpackConfig)
 const app = new Koa()
 const router = koaRouter()
 
-module.exports = (async () => {
+module.exports = (async() => {
   try {
     await laosu.beforeUseRoutes({
       config: laosu.config,
@@ -33,11 +35,13 @@ module.exports = (async () => {
     for (const item of middlewareRoutes) {
       const middlewares = [...item.middleware]
       item.needBeforeRoutes && middlewares.unshift(...beforeRestfulRoutes)
-      item.needAfterRoutes && middlewares.unshift(...afterRestfulRoutes)
+      item.needAfterRoutes && middlewares.push(...afterRestfulRoutes)
       router[item.method](item.path, ...middlewares)
     }
-
+    
     Object.keys(models).map(name => models[name]).forEach(model => {
+      console.log('===================')
+      console.log(model.modelName)
       mongoRest(router, model, '/api', {
         beforeRestfulRoutes,
         afterRestfulRoutes
@@ -56,7 +60,7 @@ module.exports = (async () => {
       log.info(`koa2 is running at ${config.serverPort}`)
     })
     
-  } catch (error) {
+  } catch (err) {
     log.error(err)
   }
 })()

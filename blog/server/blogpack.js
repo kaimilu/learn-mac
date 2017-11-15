@@ -1,5 +1,3 @@
-import { plugin } from "mongoose";
-
 class blogpack {
   constructor(options) {
     this.config = options.config || {}
@@ -15,7 +13,7 @@ class blogpack {
   }
 
   async getMiddlewareRoutes(...args) {
-    const plugins = this.plugins.filters(plugin => plugin['mountingRoute'])
+    const plugins = this.plugins.filter(plugin => plugin['mountingRoute'])
     const result = []
     for (const plugin of plugins) {
       const routeObj = await plugin.mountingRoute()
