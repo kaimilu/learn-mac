@@ -57,6 +57,10 @@ export default {
     }
   },
   mounted() {
+    /**
+     * https://vuex.vuejs.org/zh-cn/actions.html
+     * Action 通过 store.dispatch 方法触发：
+     */
     this.$store.dispatch('FETCH_OPTIONS').then(() => {
       this.title = this.$store.state.siteInfo['title'].value || ''
     })
