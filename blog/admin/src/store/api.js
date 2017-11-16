@@ -26,6 +26,7 @@ store.getImageToken = (body) => {
 store.fetchList = (model, query) => {
   let target = `${root}/${model}`
   return request.get(target, { params: query }).then((response) => {
+    console.log(response.data)
     return response.data
   })
 }
