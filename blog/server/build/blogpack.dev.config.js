@@ -16,6 +16,7 @@ const InitUserPlugin = require(`${serverStartPrefix}/initUser`)
 const CheckAuthPlugin = require('../plugins/beforeRestful/checkAuth')
 
 const LoginPlugin = require('../plugins/mountingRoute/login')
+const LogOutPlugin = require('../plugins/mountingRoute/logout')
 
 // 注册中间件服务
 config.plugins.push(
@@ -28,12 +29,13 @@ config.plugins.push(
   new CheckAuthPlugin(),
 
   // moutingRoute
-  // new LoginPlugin()
+  new LoginPlugin(),
+  new LogOutPlugin(),
   
   // beforeServerStart
-  // new InitUserPlugin(),
-  // new InstallThemePlugin(),
-  // new InitUserPlugin()
+  new InitUserPlugin(),
+  new InstallThemePlugin(),
+  new InitUserPlugin()
 )
 
 module.exports = config

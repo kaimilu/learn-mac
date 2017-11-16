@@ -40,8 +40,6 @@ module.exports = (async() => {
     }
     
     Object.keys(models).map(name => models[name]).forEach(model => {
-      console.log('===================')
-      console.log(model.modelName)
       mongoRest(router, model, '/api', {
         beforeRestfulRoutes,
         afterRestfulRoutes

@@ -3,9 +3,13 @@ const tokenService = require('../../service/token')
 
 module.exports = class {
   async beforeRestful(ctx, next) {
-    const isGettingUser = ctx.url.startsWidth('/api/user')
-    const isGettingAdmin = ctx.url.startsWidth('/admin/')
-    const isNotGet = ctx.url.startsWidth('/api/') && ctx.method !== 'GET'
+    /**
+     * startsWith()方法用来判断当前字符串是否是以另外一个给定的子字符串“开头”的
+     * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+     */
+    const isGettingUser = ctx.url.startsWith('/api/user')
+    const isGettingAdmin = ctx.url.startsWith('/admin/')
+    const isNotGet = ctx.url.startsWith('/api/') && ctx.method !== 'GET'
     if (!isGettingAdmin && !isGettingUser && !isNotGet) {
       return next()
     }
