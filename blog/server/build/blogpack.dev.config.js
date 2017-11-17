@@ -9,7 +9,7 @@ const BodyParserPlugin = require(`${useRoutesPrefix}/bodyParser`)
 const LogTimePlugin = require(`${useRoutesPrefix}/logTime`)
 const RestcPlugin = require(`${useRoutesPrefix}/restc`)
 
-// const InitOptionPlugin = require(`${serverStartPrefix}/initOption`)
+const InitOptionPlugin = require(`${serverStartPrefix}/initOption`)
 const InstallThemePlugin = require(`${serverStartPrefix}/installTheme`)
 const InitUserPlugin = require(`${serverStartPrefix}/initUser`)
 
@@ -32,10 +32,10 @@ config.plugins.push(
   new LoginPlugin(),
   new LogOutPlugin(),
   
-  // beforeServerStart
+  // beforeServerStart 初始化 用户，主题及站点配制表
   new InitUserPlugin(),
   new InstallThemePlugin(),
-  new InitUserPlugin()
+  new InitOptionPlugin()
 )
 
 module.exports = config
