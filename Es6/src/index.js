@@ -61,3 +61,27 @@ console.log(a);
   console.log(d4)
   console.log(e5)
 })('3. 解构赋值')
+
+;(function(){
+  //4.1: ... 扩展运算符
+  function js(...arg){
+    console.log(arg[0])
+    console.log(arg[1])
+    console.log(arg[2])
+  }
+  js(0,1)
+
+  let arr1 = ['laosu','wisdom','jake','suzhihui']
+  // let arr2 = arr1 // 共享同一块内存引用
+  let arr2 = [...arr1] // ... 表示的是arr1里面的值
+
+  arr2.push('zyq');
+  console.log(arr1)
+  console.log(arr2)
+
+  // 4.2 ... rest运算符
+  function test(first,...arg) {
+    console.log(arg.length)
+  }
+  test(0,1,2,3,4,5,6,7)
+})('4. 对象扩展运算符...')
