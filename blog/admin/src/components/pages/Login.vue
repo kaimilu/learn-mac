@@ -45,15 +45,26 @@ export default {
             type: 'error'
           })
         } else if (response.data.status === 'success') {
+          // 2.1 缓存token 和 用户名
           window.localStorage.setItem('token', response.data.token)
           window.localStorage.setItem('username', this.form.name)
+          // 2.2 提示成功信息
           this.$message({
             message: '登录成功',
             type: 'success',
             duration: 2000
           })
+
+          // 2.3 记录store状态
+          this.$store.dispatch('FETCH_USER', {
+            model: 'user',
+            query: {},
+            username: this.form.name
+          }).then(() => {
+            this.$router.push({ path: '/dashboard' })
+          })
         }
-      })
+      }).catch(err => console.error(err))
     }
   },
   mounted() {
@@ -62,6 +73,7 @@ export default {
      * Action 通过 store.dispatch 方法触发：
      */
     this.$store.dispatch('FETCH_OPTIONS').then(() => {
+      console.log(this.title)
       this.title = this.$store.state.siteInfo['title'].value || ''
     })
   }

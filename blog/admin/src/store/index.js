@@ -28,6 +28,15 @@ const store = new Vuex.Store({
       return api.getImageHeight(url).then(data => data.height || 100)
     },
 
+    FETCH_USER: ({ commit, state }, { model, query, username }) => {
+      return api.fetchList(model, query).then(result => {
+        for (let i = 0, len = result.length; i < len; i++) {
+          let user = result[i]
+          commit('SETUSER', { user })
+          break
+        }
+      })
+    },
     FETCH_OPTIONS: ({ commit, state }) => {
       return api.fetchList('option', {}).then(optionArr => {
         let obj = optionArr.reduce((prev, curr) => {
@@ -44,6 +53,9 @@ const store = new Vuex.Store({
 
     SET_OPTIONS: (state, { obj }) => {
       Vue.set(state, 'siteInfo', obj)
+    },
+    SET_USER: (state, { user }) => {
+      Vue.set(state, 'user', user)
     }
   },
   getters: {}
