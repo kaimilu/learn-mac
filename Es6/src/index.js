@@ -81,7 +81,18 @@ console.log(a);
 
   // 4.2 ... rest运算符
   function test(first,...arg) {
-    console.log(arg.length)
+    // console.log(arg.length)
+    // for (var i = 0; i<arg.length; i++) {
+    //   console.log(i)
+    // }
+    for (const item of arg) {
+      console.log(item)
+    }
   }
+  
   test(0,1,2,3,4,5,6,7)
 })('4. 对象扩展运算符...')
+
+;(function(){
+  
+})('5. 字符串模版')

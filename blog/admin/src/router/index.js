@@ -21,6 +21,9 @@ export default new Router({
       }
     },
     {
+      path: '/dashboard'
+    },
+    {
       path: '/', // 首页 得定向到登录页面
       redirect: '/admin/login'
     }
