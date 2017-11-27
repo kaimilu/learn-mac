@@ -28,11 +28,15 @@ const store = new Vuex.Store({
       return api.getImageHeight(url).then(data => data.height || 100)
     },
 
+    FETCH: ({ commit, state }, { model, query }) => {
+      return api.fetchList(model, query)
+    },
+
     FETCH_USER: ({ commit, state }, { model, query, username }) => {
       return api.fetchList(model, query).then(result => {
         for (let i = 0, len = result.length; i < len; i++) {
           let user = result[i]
-          commit('SETUSER', { user })
+          commit('SET_USER', { user })
           break
         }
       })

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // import HelloWorld from '@/components/HelloWorld'
+import Main from '@/components/Main'
+import Dashboard from '@/components/pages/Dashboard'
 import Login from '@/components/pages/Login'
 
 Vue.use(Router)
@@ -21,7 +23,15 @@ export default new Router({
       }
     },
     {
-      path: '/dashboard'
+      path: '/dashboard',
+      component: Main,
+      children: [
+        {
+          path: '/',
+          name: 'dashboard',
+          component: Dashboard
+        }
+      ]
     },
     {
       path: '/', // 首页 得定向到登录页面

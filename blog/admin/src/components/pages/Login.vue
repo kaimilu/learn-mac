@@ -61,6 +61,7 @@ export default {
             query: {},
             username: this.form.name
           }).then(() => {
+            // 2.4 路由跳转
             this.$router.push({ path: '/dashboard' })
           })
         }
