@@ -1,6 +1,8 @@
 <template>
   <div class="dashboard">
-
+    <div class="main">
+      <router-view :key="$route.params.id || -1"></router-view>
+    </div>
   </div>
 </template>
 

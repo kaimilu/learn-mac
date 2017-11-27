@@ -61,7 +61,14 @@ export default {
     }
   },
   methods: {
-
+    handleNodeClick(data, node, tree) {
+      if (data.title !== '最新发布的文章') {
+        this.$routes.push({
+          name: data.type === 'post' ? 'postCreate' : 'pageCreate',
+          params: { id: data._id }
+        })
+      }
+    }
   },
   mounted() {
     this.$store.dispatch('FETCH', {
