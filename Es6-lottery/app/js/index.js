@@ -1,9 +1,3 @@
-class Test{
-  constructor () {
-    this.a = 'hellow world'
-  }
-}
-
-let test = new Test();
-console.log('老苏来了!ss')
-document.body.innerHTML = test.a
+import './class/lesson1.js' // 1.let const
+import './class/lesson2.js' // 2.解构赋值
+import './class/lesson3.js' // 3.正则扩展
