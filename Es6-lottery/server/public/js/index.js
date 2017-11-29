@@ -87,6 +87,8 @@ __webpack_require__(5);
 
 __webpack_require__(6);
 
+__webpack_require__(7);
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -593,6 +595,41 @@ console.log('================数值扩展=================');
   // Math.cbrt(-1)
   console.log(-1, Math.cbrt(-1)); // -1 -1
   console.log(8, Math.cbrt(8)); // 2
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 3-7数组扩展
+ */
+console.log('================= 数组扩展 =================');
+{
+  var arr = Array.of(3, 4, 7, 9, 11);
+  console.log('arr=', arr); // [3, 4, 7, 9, 11]
+
+  var empty = Array.of();
+  console.log('empty= ', empty); // []
+}
+
+{
+  /**
+   * 1.伪数组或者集合转换在数组,
+   * 2. 类似与map 映射方法
+   */
+  var p = document.querySelectorAll('span');
+  var spanArr = Array.from(p);
+  spanArr.forEach(function (item) {
+    console.log(item.textContent);
+  });
+
+  console.log(Array.from([1, 3, 5], function (item) {
+    return item * 2;
+  })); // [2, 6, 10]
 }
 
 /***/ })
