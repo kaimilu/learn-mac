@@ -83,6 +83,10 @@ __webpack_require__(3);
 
 __webpack_require__(4);
 
+__webpack_require__(5);
+
+__webpack_require__(6);
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -365,6 +369,230 @@ function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
   /**
    * s：该修饰符还没有实现
    */
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _templateObject = _taggedTemplateLiteral(['i am ', ', ', ''], ['i am ', ', ', '']),
+    _templateObject2 = _taggedTemplateLiteral(['Hi\n', ''], ['Hi\\n', '']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+/**
+ * 4 字符串扩展（上）
+ */
+{
+  console.log('a', 'a'); // a a
+  // 当大于2个字节 超过了0xFFFF
+  console.log('s', '\u20BB7'); // s ₻7
+
+  console.log('s', '\uD842\uDFB7');
+}
+
+{
+  var s = '𠮷';
+  console.log('length', s.length); // es5: 长度为2
+
+  /**
+   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
+   */
+  console.log('8', s.charAt()); //  取第一个位置的字符
+  console.log('1', s.charAt(1)); // 
+  /**
+   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
+   */
+  console.log('at1', s.charCodeAt(0)); // 取码值
+  console.log('at1', s.charCodeAt(1)); // 57271
+
+  var s1 = '𠮷a';
+  /**
+   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt
+   */
+  console.log('length:', s1.length); // 3
+  console.log('code0', s1.codePointAt(0)); //134071
+  console.log('code0', s1.codePointAt(0).toString(16)); //20bb7
+  console.log('code1', s1.codePointAt(1)); // 57271
+  console.log('code2', s1.codePointAt(2)); // 97
+}
+
+{
+  console.log(String.fromCharCode("0x20bb7")); // es5 ஷ
+  console.log(String.fromCodePoint("0x20bb7")); // es6 𠮷
+}
+
+{
+  // 字符串遍历器
+  var str = '\uD842\uDFB7abc';
+  for (var i = 0; i < str.length; i++) {
+    console.log('es5 ', str[i]); // � � a b c
+  }
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = str[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var item = _step.value;
+
+      console.log('es6', item); // 𠮷 a b c
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+}
+
+// 3-5字符串扩展（下）
+{
+  // 包含、起始、结尾
+  var _str = 'string';
+  console.log(_str.includes('r')); // true
+  console.log(_str.startsWith('s')); // true
+  console.log(_str.endsWith('s')); // false
+  console.log(_str.endsWith('g')); // true
+}
+
+{
+  // 重复n次
+  var _str2 = 'laosu';
+  console.log(_str2.repeat(6));
+}
+
+{
+  // 模板字符串
+  console.log('=================== 模板字符串 ======================');
+  var name = 'list';
+  var info = 'hello world';
+  var m = 'i am ' + name + ', ' + info;
+  console.log(m); // i am list, hello world
+}
+
+{
+  // es7 草案
+  /**
+   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+   * 从当前字符串的开头（左侧）开始填充
+   */
+  console.log('1'.padStart(2, '0')); // 补白
+  console.log('1'.padEnd(2, '0'));
+}
+
+{
+  // i am ,, ,listhello world
+  var abc = function abc(s, v1, v2) {
+    console.log(s, v1, v2);
+    return s + v1 + v2;
+  };
+
+  // 标签模板
+  console.log('标签模板：');
+
+  var user = {
+    name: 'list',
+    info: 'hello world'
+  };
+
+  console.log(abc(_templateObject, user.name, user.info));
+}
+
+{
+  console.log(String.raw(_templateObject2, 1 + 2)); // Hi\n3
+  /**
+   * H1
+      3
+   */
+  console.log('H1\n' + (1 + 2));
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 3-6数值扩展
+ */
+console.log('================数值扩展=================');
+{
+  console.log('B', 503);
+  console.log(503); // 二进制： 503
+  console.log(503); // 八进制： 503
+  console.log('O', 503); // 八进制： 503
+}
+
+{
+  /**
+   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite
+   */
+  console.log('15', Number.isFinite(15)); // 15 true
+  console.log('NaN', Number.isFinite(NaN)); // NaN false
+  console.log('1/0', Number.isFinite('true' / 0)); // 1/0 false
+
+  console.log('NaN', Number.isNaN(NaN)); // NaN true
+  console.log('NaN', Number.isNaN(0)); // NaN false
+}
+
+{
+  // 数字是不是整数
+  console.log('25: ', Number.isInteger(25)); // 25:  true
+  console.log('25.0: ', Number.isInteger(25.0)); // 25.0:  true
+  console.log('25.01: ', Number.isInteger(25.01)); // 25.01:  false
+  // 非数 ，判断会出错
+  console.log('25.01: ', Number.isInteger('25')); // 25:  false
+
+  // 2的53次方
+  console.log(Number.MAX_SAFE_INTEGER, ',', Math.pow(2, 53) - 1);
+  console.log(Number.isSafeInteger(Math.pow(2, 53)));
+  console.log(Number.MIN_SAFE_INTEGER);
+}
+
+{
+  // 取小数的整数
+  /**
+   * es5: Math.float, Math.ceil, Math.parseInt
+   */
+  console.log(4.1, Math.trunc(4.1)); // 4.1 4
+  console.log(4.9, Math.trunc(4.9));
+}
+
+{
+  /**
+   * 判断一个数是正数、负数、零
+   */
+  console.log('-5', Math.sign(-5)); // -5 -1
+  console.log('0', Math.sign(0)); // 0 0
+  console.log('5', Math.sign(5)); // 5 1
+  console.log('50', Math.sign('50')); // 50 1
+  console.log('0', Math.sign('0')); // 50 1
+  console.log('-10', Math.sign('-10')); // 50 1
+  console.log('foo', Math.sign('foo')); // 50 NaN
+}
+
+{
+  /**
+   * 立方根
+   */
+  // Math.cbrt(-1)
+  console.log(-1, Math.cbrt(-1)); // -1 -1
+  console.log(8, Math.cbrt(8)); // 2
 }
 
 /***/ })
