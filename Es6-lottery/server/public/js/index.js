@@ -3990,10 +3990,6 @@ __webpack_require__(126);
 
 __webpack_require__(329);
 
-__webpack_require__(330);
-
-__webpack_require__(331);
-
 /***/ }),
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9591,403 +9587,185 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-/**
- * 对象扩展
- *    函数新增特性
- *      1.简洁表示法
- *      2.属性表达式
- *      3.扩展运算符
- *      4.Object新增方法
- */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// 简洁表示法
-{
-  var o = 1;
-  var k = 2;
-  var es5 = {
-    o: o,
-    k: k
-  };
-  var es6 = {
-    o: o,
-    k: k
-  };
-  console.log(es5, es6);
-
-  var es5_method = {
-    hello: function hello() {
-      console.log('laosu');
-    }
-  };
-
-  var es6_method = {
-    hello: function hello() {
-      console.log('laosu');
-    }
-  };
-
-  console.log(es5_method.hello(), es6_method.hello());
-}
-
-// 属性表达式
-{
-  var a = 'b';
-  var es5_obj = {
-    a: 'c',
-    b: 'c'
-  };
-
-  var es6_obj = _defineProperty({}, a, 'c');
-
-  console.log(es5_obj, es6_obj);
-}
-
-// 扩展运算符
-{
-  console.log('字符串', Object.is('abc', 'abc'), 'abc' === 'abc'); // 字符串 true true
-
-  console.log('数组', Object.is([], []), [] === []); // 数组 false false
-
-  // 拷贝 注限制 只能 浅拷贝
-  console.log('拷贝 ', Object.assign({ a: 'a' }, { b: 'b' }));
-
-  var test = { k: 123, o: 456 };
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = Object.entries(test)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var _step$value = _slicedToArray(_step.value, 2),
-          key = _step$value[0],
-          value = _step$value[1];
-
-      console.log([key, value]);
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
-}
-
-{
-  // let {a,b, ...c} = {a:'test',b:'kill',c:'ddd',d:'ccc'}
-
-}
-
-/***/ }),
-/* 330 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol
- * Symbol用法
- *   Symbol的概念： 独一无二的
- *   Symbol的作用
+ * 3-14类和对象
+ * 1.基本方法
+ * 2.类的继承
+ * 3.静态方法
+ * 4.静态属性
+ * 5.getter
+ * 6.setter
  */
 
-// 声明
+// 1.基本定义和生成实例
 {
-  var a1 = Symbol();
-  var a2 = Symbol();
-  console.log(a1 === a2); // false
+  var Parent =
+  // 1.1: 构造函数
+  function Parent() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
 
-  var a3 = Symbol.for('a3');
-  var a4 = Symbol.for('a3');
-  console.log(a3 === a4); // true
+    _classCallCheck(this, Parent);
+
+    this.name = name;
+  };
+
+  var v_parent = new Parent('v');
+  console.log('构造函数实例：', v_parent);
 }
 
-// 使用场景
+// 2.类的继承
 {
-  var _obj;
+  // 父类
+  var _Parent = function _Parent() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
 
-  var _a = Symbol.for('abc');
-  var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
-  console.log('obj', obj);
-  // fof forIn 拿不到Symbol类型数据
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
+    _classCallCheck(this, _Parent);
 
-  try {
-    for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var _step$value = _slicedToArray(_step.value, 2),
-          key = _step$value[0],
-          value = _step$value[1];
+    this.name = name;
+  };
 
-      console.log([key, value]);
+  // 子类
+
+
+  var Child = function (_Parent2) {
+    _inherits(Child, _Parent2);
+
+    function Child() {
+      _classCallCheck(this, Child);
+
+      return _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).apply(this, arguments));
     }
 
-    // 只取Symboo类型数据
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
+    return Child;
+  }(_Parent);
 
-  Object.getOwnPropertySymbols(obj).forEach(function (item) {
-    console.log(obj[item]); // 123
-  });
-
-  // 都取
-  Reflect.ownKeys(obj).forEach(function (item) {
-    console.log('ownkeys ', obj[item]);
-  });
+  console.log('继承：', new Child());
 }
 
-/***/ }),
-/* 331 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-/**
- * 3-11set-map数据结构
- *  1.Set的用法
- *  2.WeakSet的用法 
- *  3.Map的用法
- *  4.WeakMap的用法 
- */
-
-// Set的用法
+// 继承传递参数
 {
-  var list = new Set();
-  list.add(5);
-  list.add(7);
+  var _Parent3 = function _Parent3() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
 
-  console.log('size', list.size); // 2
+    _classCallCheck(this, _Parent3);
+
+    this.name = name;
+  };
+
+  var _Child = function (_Parent4) {
+    _inherits(_Child, _Parent4);
+
+    function _Child() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'child';
+      var type = arguments[1];
+
+      _classCallCheck(this, _Child);
+
+      // super 继承父类的属性以便修改，且要放在自定义参数前面
+      var _this2 = _possibleConstructorReturn(this, (_Child.__proto__ || Object.getPrototypeOf(_Child)).call(this, name));
+
+      _this2.type = type;
+      return _this2;
+    }
+
+    return _Child;
+  }(_Parent3);
+
+  console.log('继承：', new _Child('wisdom', '男'));
 }
 
+// getter, setter
 {
-  var arr = [1, 2, 3, 4, 5];
-  var _list = new Set(arr);
+  var _Parent5 = function () {
+    function _Parent5() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
 
-  console.log('size', _list.size); // 5
+      _classCallCheck(this, _Parent5);
+
+      this.name = name;
+    }
+
+    // 属性
+
+
+    _createClass(_Parent5, [{
+      key: 'longName',
+      get: function get() {
+        return 'mk' + this.name;
+      },
+      set: function set(value) {
+        this.name = value;
+      }
+    }]);
+
+    return _Parent5;
+  }();
+
+  var v = new _Parent5();
+  console.log('getter', v.longName); // getter mklaosu
+  v.longName = 'hello';
+  console.log('setter', v.longName);
 }
 
-//   元素必须是唯一的 可用来去重
+// 类的静态方法
 {
-  var _list2 = new Set();
-  _list2.add(1);
-  _list2.add(2);
-  _list2.add(1);
+  var _Parent6 = function () {
+    function _Parent6() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
 
-  console.log('size', _list2.size, _list2);
+      _classCallCheck(this, _Parent6);
 
-  var _arr = [1, 2, 3, 1, '2'];
-  var list2 = new Set(_arr);
+      this.name = name;
+    }
 
-  console.log('unique', list2);
+    // 静态方法
+
+
+    _createClass(_Parent6, null, [{
+      key: 'tell',
+      value: function tell() {
+        console.log('tell');
+      }
+    }]);
+
+    return _Parent6;
+  }();
+
+  _Parent6.tell();
 }
 
-// Set类型的方法
+// 类的静态属性
 {
-  var _arr2 = ['add', 'delete', 'clear', 'has'];
-  var _list3 = new Set(_arr2);
+  var _Parent7 = function () {
+    function _Parent7() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
 
-  console.log('has', _list3.has('add'));
-  console.log('delete', _list3.delete('add'), _list3);
-  _list3.clear();
-  console.log('list', _list3);
-}
+      _classCallCheck(this, _Parent7);
 
-// 遍历
-{
-  var _arr3 = ['add', 'delete', 'clear', 'has'];
-  var _list4 = new Set(_arr3);
-
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = _list4.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var key = _step.value;
-
-      console.log('keys', key); // keys add
+      this.name = name;
     }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
+
+    _createClass(_Parent7, null, [{
+      key: 'tell',
+      value: function tell() {
+        console.log('tell');
       }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
+    }]);
 
-  var _iteratorNormalCompletion2 = true;
-  var _didIteratorError2 = false;
-  var _iteratorError2 = undefined;
+    return _Parent7;
+  }();
 
-  try {
-    for (var _iterator2 = _list4.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var value = _step2.value;
+  _Parent7.type = 'test';
 
-      console.log('keys', value); // keys add
-    }
-  } catch (err) {
-    _didIteratorError2 = true;
-    _iteratorError2 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion2 && _iterator2.return) {
-        _iterator2.return();
-      }
-    } finally {
-      if (_didIteratorError2) {
-        throw _iteratorError2;
-      }
-    }
-  }
-
-  var _iteratorNormalCompletion3 = true;
-  var _didIteratorError3 = false;
-  var _iteratorError3 = undefined;
-
-  try {
-    for (var _iterator3 = _list4[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-      var _value = _step3.value;
-
-      console.log('keys', _value); // keys add
-    }
-  } catch (err) {
-    _didIteratorError3 = true;
-    _iteratorError3 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion3 && _iterator3.return) {
-        _iterator3.return();
-      }
-    } finally {
-      if (_didIteratorError3) {
-        throw _iteratorError3;
-      }
-    }
-  }
-
-  var _iteratorNormalCompletion4 = true;
-  var _didIteratorError4 = false;
-  var _iteratorError4 = undefined;
-
-  try {
-    for (var _iterator4 = _list4.entries()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-      var _step4$value = _slicedToArray(_step4.value, 2),
-          _key = _step4$value[0],
-          _value2 = _step4$value[1];
-
-      console.log('keys', _key, _value2); // keys add
-    }
-  } catch (err) {
-    _didIteratorError4 = true;
-    _iteratorError4 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion4 && _iterator4.return) {
-        _iterator4.return();
-      }
-    } finally {
-      if (_didIteratorError4) {
-        throw _iteratorError4;
-      }
-    }
-  }
-
-  _list4.forEach(function (item) {
-    console.log(item);
-  });
-}
-
-// WeakSet
-/**
- * 1.只能是对象
- * 2.对象是弱引用，不会去检测有没有被垃圾回收
- */
-{
-  var weakList = new WeakSet();
-
-  var arg = {};
-
-  weakList.add(arg);
-  // weakList.add(2) // Uncaught TypeError: Invalid value used in weak set
-  console.log('weakList', weakList);
-
-  /**
-   * 1.没有size属性
-   * 2.没有clear方法
-   * 3.不能遍历
-   */
-}
-/**
- * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
- */
-// Map
-{
-  var map = new Map();
-  var _arr4 = '123';
-  // let arr = ['123']
-
-  // 添加元素 map的元素key值可以是任何数据类型
-  map.set(_arr4, 456);
-  console.log('map', map, map.get(_arr4)); // Map(1) {Array(1) => 456} 456
-}
-
-{
-  var _map = new Map([['a', 123], ['b', 456]]);
-  console.log('map args ', _map); // {"a" => 123, "b" => 456}
-  console.log('map size', _map.size);
-  console.log('map delete', _map.delete('a'), _map);
-  console.log('clear', _map.clear(), _map);
-}
-
-// WeakMap
-{
-  /**
-   * 同理，key值只能是对象
-   */
-  var weakmap = new WeakMap();
-
-  var o = {};
-  weakmap.set(o, 123);
-  console.log(weakmap.get(o));
+  console.log('静态属性：', _Parent7.type); // 静态属性： test
 }
 
 /***/ })

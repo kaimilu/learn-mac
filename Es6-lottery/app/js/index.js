@@ -6,6 +6,8 @@ import 'babel-polyfill'     // es7 兼容包
 // import './class/lesson5.js' // 5.数值扩展
 // import './class/lesson6.js' // 6.数组扩展
 // import './class/lesson7.js' // 7.函数扩展
-import './class/lesson8.js'   //  8.对象扩展
-import './class/lesson9.js'   //  9.Symbol用法
-import './class/lesson10.js'   //  10.set-map数据结构
+// import './class/lesson8.js'   //  8.对象扩展
+// import './class/lesson9.js'   //  9.Symbol用法
+// import './class/lesson10.js'   //  10.set-map数据结构
+// import './class/lesson11.js'  //11.Proxy和Reflect
+import './class/lesson12.js'  //12.类和对象
