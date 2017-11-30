@@ -3994,14 +3994,6 @@ __webpack_require__(330);
 
 __webpack_require__(331);
 
-__webpack_require__(332);
-
-__webpack_require__(333);
-
-__webpack_require__(334);
-
-__webpack_require__(335);
-
 /***/ }),
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9599,353 +9591,82 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
-function test() {
-  // var a = 2
-  // let a = 1
-  // console.log(a)
-
-  // for(let i=1; i<3; i++) {
-  //   console.log(i)
-  // }
-  // console.log(i)
-
-  // let a = 1
-  // let a = 2
-  /**
-   * let 块作用域 
-   * 严格模式：未定义的变量不能使用
-   * let 不能定义同一个变量多次
-   */
-}
-function last() {
-  /**
-   * const 常量
-   * 1. 常量不能修改
-   * 2. 声明时必须赋值
-   * 3. 常量是引用类型，值是可以修改的
-   */
-  var PI = 3.1415926;
-  // PI = 8; // 常量不能修改，只读：“PI" is read-only
-  var k = {
-    a: 1
-  };
-  k.b = 3;
-  k.laosu = '老苏';
-  console.log(PI, k);
-}
-
-test();
-last();
-
-/***/ }),
-/* 330 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
- * 解构赋值
+ * 对象扩展
+ *    函数新增特性
+ *      1.简洁表示法
+ *      2.属性表达式
+ *      3.扩展运算符
+ *      4.Object新增方法
  */
 
+// 简洁表示法
 {
-  var a = void 0,
-      b = void 0,
-      rest = void 0;
-  // 数组解构
-  a = 1;
-  b = 2;
-  console.log('============ 数组解构 ============');
-  console.log(a, b);
-}
+  var o = 1;
+  var k = 2;
+  var es5 = {
+    o: o,
+    k: k
+  };
+  var es6 = {
+    o: o,
+    k: k
+  };
+  console.log(es5, es6);
 
-{
-  var _a = void 0,
-      _b = void 0,
-      _rest = void 0;
-  // ...扩展运算符
-  _a = 1;
-  _b = 2;
-  _rest = [3, 4, 5, 6];
-  console.log(_a, _b, _rest);
-}
-
-// 对象解构
-{
-  var _a2 = void 0,
-      _b2 = void 0;
-  var _a$b = { a: 1, b: 2 };
-  _a2 = _a$b.a;
-  _b2 = _a$b.b;
-
-  console.log('============ 对象解构 ============');
-  console.log(_a2, _b2);
-}
-
-// 默认值
-{
-  var _a3 = void 0,
-      _b3 = void 0,
-      c = void 0,
-      _rest2 = void 0;
-  //  [a,b,c=3]=[1,2]
-  // 如果没有配对成功就是undefined
-  var _ref = [1, 2];
-  _a3 = _ref[0];
-  _b3 = _ref[1];
-  c = _ref[2];
-  console.log(_a3, _b3, c); // 1,2,undefined
-}
-
-// 变量交换
-{
-  var _a4 = 1;
-  var _b4 = 2;
-  var _ref2 = [_b4, _a4];
-  _a4 = _ref2[0];
-  _b4 = _ref2[1];
-
-  console.log(_a4, _b4); // 2,1
-}
-
-// 
-{
-  var f = function f() {
-    return [1, 2];
+  var es5_method = {
+    hello: function hello() {
+      console.log('laosu');
+    }
   };
 
-  var _a5 = void 0,
-      _b5 = void 0;
-
-  var _f = f();
-
-  var _f2 = _slicedToArray(_f, 2);
-
-  _a5 = _f2[0];
-  _b5 = _f2[1];
-
-  console.log(_a5, _b5);
-}
-
-{
-  var _f3 = function _f3() {
-    return [1, 2, 3, 4, 5];
+  var es6_method = {
+    hello: function hello() {
+      console.log('laosu');
+    }
   };
 
-  var _a6 = void 0,
-      _b6 = void 0,
-      _c = void 0;
-
-  var _f4 = _f3();
-
-  var _f5 = _slicedToArray(_f4, 4);
-
-  _a6 = _f5[0];
-  _b6 = _f5[3];
-
-  console.log(_a6, _b6);
+  console.log(es5_method.hello(), es6_method.hello());
 }
 
+// 属性表达式
 {
-  var _f6 = function _f6() {
-    return [1, 2, 3, 4, 5];
+  var a = 'b';
+  var es5_obj = {
+    a: 'c',
+    b: 'c'
   };
 
-  var _a7 = void 0,
-      _b7 = void 0,
-      _c2 = void 0;
-  //  [a,...b] = f()
+  var es6_obj = _defineProperty({}, a, 'c');
 
-  var _f7 = _f6();
-
-  var _f8 = _toArray(_f7);
-
-  _a7 = _f8[0];
-  _b7 = _f8.slice(2);
-
-  console.log(_a7, _b7);
+  console.log(es5_obj, es6_obj);
 }
 
+// 扩展运算符
 {
-  var o = { p: 42, q: true };
-  var p = o.p,
-      q = o.q;
+  console.log('字符串', Object.is('abc', 'abc'), 'abc' === 'abc'); // 字符串 true true
 
-  console.log(p, q);
-}
+  console.log('数组', Object.is([], []), [] === []); // 数组 false false
 
-{
-  var _a9 = { a: 3 },
-      _a9$a = _a9.a,
-      _a8 = _a9$a === undefined ? 10 : _a9$a,
-      _a9$b = _a9.b,
-      _b8 = _a9$b === undefined ? 5 : _a9$b;
+  // 拷贝 注限制 只能 浅拷贝
+  console.log('拷贝 ', Object.assign({ a: 'a' }, { b: 'b' }));
 
-  console.log(_a8, _b8);
-}
-
-{
-  var metaDate = {
-    title: 'abc',
-    test: [{
-      title: 'test',
-      desc: 'description'
-    }]
-  };
-
-  var esTitle = metaDate.title,
-      _metaDate$test = _slicedToArray(metaDate.test, 1),
-      _metaDate$test$ = _metaDate$test[0],
-      cnTitle = _metaDate$test$.title,
-      descLaosu = _metaDate$test$.desc;
-
-  console.log(esTitle, cnTitle, descLaosu);
-}
-
-/***/ }),
-/* 331 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 正则
-{
-  //es5:
-  var regex = new RegExp('xyz', 'i');
-  var regex2 = new RegExp(/xyz/i);
-
-  console.log(regex.test('xyz123'), regex2.test('xyz123')); // true true
-
-  // es6:
-  var regex3 = new RegExp(/xyz/ig, 'i');
-  // flags: 获取正则对象修饰符
-  console.log(regex3.flags);
-}
-
-{
-  /**
-   * g,y都是全局匹配
-   * 
-   */
-  var s = 'bbb_bb_b';
-  var a1 = /b+/g;
-  var a2 = new RegExp('b+', 'y');
-
-  console.log('g:', a1.exec(s), a2.exec(s));
-  console.log('y:', a1.exec(s), a2.exec(s));
-
-  // 是否开启y模式
-  console.log(a1.sticky, a2.sticky); // false true
-}
-
-{
-  /**
-   * u: unicode
-   */
-  console.log('u-1', /^\uD83D/.test('\uD83D\uDC2A'));
-  console.log('u-2', /^(?:\uD83D(?![\uDC00-\uDFFF]))/.test('\uD83D\uDC2A'));
-
-  console.log(/\u{61}/.test('a')); // false
-  console.log(/a/.test('a')); // true
-
-  console.log('\uD842\uDFB7');
-
-  var _s = '𠮷';
-  // 字符大于两个字符 "." 不能识别，加上u才可以
-  console.log('u', /^.$/.test(_s)); // false
-  console.log('u-2', /^(?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])$/.test(_s)); // true
-
-  console.log('test', /𠮷{2}/.test('𠮷𠮷')); // false
-  console.log('test', /(?:\uD842\uDFB7){2}/.test('𠮷𠮷')); // false
-
-  /**
-   * "."修饰符除了大于两个字节的字符不能匹配，还有以下4种：
-   * 1. 换行符       \n
-   * 2. 回车符       \r
-   * 3. 行分隔符
-   * 4. 段分隔符
-   */
-
-  /**
-   * s：该修饰符还没有实现
-   */
-}
-
-/***/ }),
-/* 332 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _templateObject = _taggedTemplateLiteral(['i am ', ', ', ''], ['i am ', ', ', '']),
-    _templateObject2 = _taggedTemplateLiteral(['Hi\n', ''], ['Hi\\n', '']);
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-/**
- * 4 字符串扩展（上）
- */
-{
-  console.log('a', 'a'); // a a
-  // 当大于2个字节 超过了0xFFFF
-  console.log('s', '\u20BB7'); // s ₻7
-
-  console.log('s', '\uD842\uDFB7');
-}
-
-{
-  var s = '𠮷';
-  console.log('length', s.length); // es5: 长度为2
-
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
-   */
-  console.log('8', s.charAt()); //  取第一个位置的字符
-  console.log('1', s.charAt(1)); // 
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
-   */
-  console.log('at1', s.charCodeAt(0)); // 取码值
-  console.log('at1', s.charCodeAt(1)); // 57271
-
-  var s1 = '𠮷a';
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt
-   */
-  console.log('length:', s1.length); // 3
-  console.log('code0', s1.codePointAt(0)); //134071
-  console.log('code0', s1.codePointAt(0).toString(16)); //20bb7
-  console.log('code1', s1.codePointAt(1)); // 57271
-  console.log('code2', s1.codePointAt(2)); // 97
-}
-
-{
-  console.log(String.fromCharCode("0x20bb7")); // es5 ஷ
-  console.log(String.fromCodePoint("0x20bb7")); // es6 𠮷
-}
-
-{
-  // 字符串遍历器
-  var str = '\uD842\uDFB7abc';
-  for (var i = 0; i < str.length; i++) {
-    console.log('es5 ', str[i]); // � � a b c
-  }
-
+  var test = { k: 123, o: 456 };
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
 
   try {
-    for (var _iterator = str[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var item = _step.value;
+    for (var _iterator = Object.entries(test)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _step$value = _slicedToArray(_step.value, 2),
+          key = _step$value[0],
+          value = _step$value[1];
 
-      console.log('es6', item); // 𠮷 a b c
+      console.log([key, value]);
     }
   } catch (err) {
     _didIteratorError = true;
@@ -9963,145 +9684,89 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
   }
 }
 
-// 3-5字符串扩展（下）
 {
-  // 包含、起始、结尾
-  var _str = 'string';
-  console.log(_str.includes('r')); // true
-  console.log(_str.startsWith('s')); // true
-  console.log(_str.endsWith('s')); // false
-  console.log(_str.endsWith('g')); // true
-}
+  // let {a,b, ...c} = {a:'test',b:'kill',c:'ddd',d:'ccc'}
 
-{
-  // 重复n次
-  var _str2 = 'laosu';
-  console.log(_str2.repeat(6));
-}
-
-{
-  // 模板字符串
-  console.log('=================== 模板字符串 ======================');
-  var name = 'list';
-  var info = 'hello world';
-  var m = 'i am ' + name + ', ' + info;
-  console.log(m); // i am list, hello world
-}
-
-{
-  // es7 草案
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
-   * 从当前字符串的开头（左侧）开始填充
-   */
-  console.log('1'.padStart(2, '0')); // 补白
-  console.log('1'.padEnd(2, '0'));
-}
-
-{
-  // i am ,, ,listhello world
-  var abc = function abc(s, v1, v2) {
-    console.log(s, v1, v2);
-    return s + v1 + v2;
-  };
-
-  // 标签模板
-  console.log('标签模板：');
-
-  var user = {
-    name: 'list',
-    info: 'hello world'
-  };
-
-  console.log(abc(_templateObject, user.name, user.info));
-}
-
-{
-  console.log(String.raw(_templateObject2, 1 + 2)); // Hi\n3
-  /**
-   * H1
-      3
-   */
-  console.log('H1\n' + (1 + 2));
 }
 
 /***/ }),
-/* 333 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
- * 3-6数值扩展
+ * https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol
+ * Symbol用法
+ *   Symbol的概念： 独一无二的
+ *   Symbol的作用
  */
-console.log('================数值扩展=================');
+
+// 声明
 {
-  console.log('B', 503);
-  console.log(503); // 二进制： 503
-  console.log(503); // 八进制： 503
-  console.log('O', 503); // 八进制： 503
+  var a1 = Symbol();
+  var a2 = Symbol();
+  console.log(a1 === a2); // false
+
+  var a3 = Symbol.for('a3');
+  var a4 = Symbol.for('a3');
+  console.log(a3 === a4); // true
 }
 
+// 使用场景
 {
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite
-   */
-  console.log('15', Number.isFinite(15)); // 15 true
-  console.log('NaN', Number.isFinite(NaN)); // NaN false
-  console.log('1/0', Number.isFinite('true' / 0)); // 1/0 false
+  var _obj;
 
-  console.log('NaN', Number.isNaN(NaN)); // NaN true
-  console.log('NaN', Number.isNaN(0)); // NaN false
-}
+  var _a = Symbol.for('abc');
+  var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
+  console.log('obj', obj);
+  // fof forIn 拿不到Symbol类型数据
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-{
-  // 数字是不是整数
-  console.log('25: ', Number.isInteger(25)); // 25:  true
-  console.log('25.0: ', Number.isInteger(25.0)); // 25.0:  true
-  console.log('25.01: ', Number.isInteger(25.01)); // 25.01:  false
-  // 非数 ，判断会出错
-  console.log('25.01: ', Number.isInteger('25')); // 25:  false
+  try {
+    for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _step$value = _slicedToArray(_step.value, 2),
+          key = _step$value[0],
+          value = _step$value[1];
 
-  // 2的53次方
-  console.log(Number.MAX_SAFE_INTEGER, ',', Math.pow(2, 53) - 1);
-  console.log(Number.isSafeInteger(Math.pow(2, 53)));
-  console.log(Number.MIN_SAFE_INTEGER);
-}
+      console.log([key, value]);
+    }
 
-{
-  // 取小数的整数
-  /**
-   * es5: Math.float, Math.ceil, Math.parseInt
-   */
-  console.log(4.1, Math.trunc(4.1)); // 4.1 4
-  console.log(4.9, Math.trunc(4.9));
-}
+    // 只取Symboo类型数据
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
 
-{
-  /**
-   * 判断一个数是正数、负数、零
-   */
-  console.log('-5', Math.sign(-5)); // -5 -1
-  console.log('0', Math.sign(0)); // 0 0
-  console.log('5', Math.sign(5)); // 5 1
-  console.log('50', Math.sign('50')); // 50 1
-  console.log('0', Math.sign('0')); // 50 1
-  console.log('-10', Math.sign('-10')); // 50 1
-  console.log('foo', Math.sign('foo')); // 50 NaN
-}
+  Object.getOwnPropertySymbols(obj).forEach(function (item) {
+    console.log(obj[item]); // 123
+  });
 
-{
-  /**
-   * 立方根
-   */
-  // Math.cbrt(-1)
-  console.log(-1, Math.cbrt(-1)); // -1 -1
-  console.log(8, Math.cbrt(8)); // 2
+  // 都取
+  Reflect.ownKeys(obj).forEach(function (item) {
+    console.log('ownkeys ', obj[item]);
+  });
 }
 
 /***/ }),
-/* 334 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10110,61 +9775,70 @@ console.log('================数值扩展=================');
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 /**
- * 3-7数组扩展
+ * 3-11set-map数据结构
+ *  1.Set的用法
+ *  2.WeakSet的用法 
+ *  3.Map的用法
+ *  4.WeakMap的用法 
  */
-console.log('================= 数组扩展 =================');
-{
-  var arr = Array.of(3, 4, 7, 9, 11);
-  console.log('arr=', arr); // [3, 4, 7, 9, 11]
 
-  var empty = Array.of();
-  console.log('empty= ', empty); // []
+// Set的用法
+{
+  var list = new Set();
+  list.add(5);
+  list.add(7);
+
+  console.log('size', list.size); // 2
 }
 
 {
-  /**
-   * 1.伪数组或者集合转换在数组,
-   * 2. 类似与map 映射方法
-   */
-  var p = document.querySelectorAll('span');
-  var spanArr = Array.from(p);
-  spanArr.forEach(function (item) {
-    console.log(item.textContent);
-  });
+  var arr = [1, 2, 3, 4, 5];
+  var _list = new Set(arr);
 
-  console.log(Array.from([1, 3, 5], function (item) {
-    return item * 2;
-  })); // [2, 6, 10]
+  console.log('size', _list.size); // 5
 }
 
+//   元素必须是唯一的 可用来去重
 {
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
-   * 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素
-   * arr.fill(value, start, end)
-   * value: 用来填充数组元素的值; start :起始索引，默认值为0; end :终止索引，默认值为 this.length
-   */
-  console.log('fill-7', [1, 'a', undefined].fill(7)); // fill-7 (3) [7, 7, 7]
-  console.log('fill,pos', ['a', 'b', 'c'].fill(7, 1, 3)); // ["a", 7, 7]
+  var _list2 = new Set();
+  _list2.add(1);
+  _list2.add(2);
+  _list2.add(1);
+
+  console.log('size', _list2.size, _list2);
+
+  var _arr = [1, 2, 3, 1, '2'];
+  var list2 = new Set(_arr);
+
+  console.log('unique', list2);
 }
 
+// Set类型的方法
 {
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/keys
-   * keys() 方法返回一个新的Array迭代器，它包含数组中每个索引的键
-   *
-   */
+  var _arr2 = ['add', 'delete', 'clear', 'has'];
+  var _list3 = new Set(_arr2);
+
+  console.log('has', _list3.has('add'));
+  console.log('delete', _list3.delete('add'), _list3);
+  _list3.clear();
+  console.log('list', _list3);
+}
+
+// 遍历
+{
+  var _arr3 = ['add', 'delete', 'clear', 'has'];
+  var _list4 = new Set(_arr3);
+
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
 
   try {
-    for (var _iterator = ['1', 'c', 'ks'].keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var index = _step.value;
+    for (var _iterator = _list4.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var key = _step.value;
 
-      console.log('keys', index); // keys 0/1/2
+      console.log('keys', key); // keys add
     }
-    // 有兼容问题：要index.js 里的兼容包===> babel-polyfill.js
   } catch (err) {
     _didIteratorError = true;
     _iteratorError = err;
@@ -10185,10 +9859,10 @@ console.log('================= 数组扩展 =================');
   var _iteratorError2 = undefined;
 
   try {
-    for (var _iterator2 = ['1,', 'c', 'ks'].values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+    for (var _iterator2 = _list4.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
       var value = _step2.value;
 
-      console.log('values', value); // values 1/c/ks
+      console.log('keys', value); // keys add
     }
   } catch (err) {
     _didIteratorError2 = true;
@@ -10210,12 +9884,10 @@ console.log('================= 数组扩展 =================');
   var _iteratorError3 = undefined;
 
   try {
-    for (var _iterator3 = ['1', 'c', 'ks'].entries()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-      var _step3$value = _slicedToArray(_step3.value, 2),
-          _index = _step3$value[0],
-          _value = _step3$value[1];
+    for (var _iterator3 = _list4[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var _value = _step3.value;
 
-      console.log('entries', _index, _value); // entries 0 1 // 1 c // 2 ks
+      console.log('keys', _value); // keys add
     }
   } catch (err) {
     _didIteratorError3 = true;
@@ -10231,161 +9903,91 @@ console.log('================= 数组扩展 =================');
       }
     }
   }
-}
 
-{
-  /**
-   * MSN: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin
-   * copyWithin() 方法浅复制数组的一部分到同一数组中的另一个位置，并返回它，而不修改其大小
-   * arr.copyWithin(target, start, end)
-   *
-   */
-  console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4)); // [4, 2, 3, 4, 5]
-}
+  var _iteratorNormalCompletion4 = true;
+  var _didIteratorError4 = false;
+  var _iteratorError4 = undefined;
 
-{
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-   * 查找 find() findIndex()
-   * find 只找到第一个就不继续找了
-   * findIndex 返回符合条件的元素下标
-   */
-  console.log("大于3的值：", [1, 2, 3, 4, 5, 6].find(function (item) {
-    return item > 3;
-  })); // 4
-  console.log("大于3的值：", [1, 2, 3, 4, 5, 6].findIndex(function (item) {
-    return item > 3;
-  })); // 3
-}
+  try {
+    for (var _iterator4 = _list4.entries()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+      var _step4$value = _slicedToArray(_step4.value, 2),
+          _key = _step4$value[0],
+          _value2 = _step4$value[1];
 
-{
-  /**
-   * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
-   */
-  // 是否包括某个元素
-  console.log('number', [1, 2, NaN].includes(1)); // true
-  console.log('number', [1, 2, NaN].includes(NaN)); // true
-}
-
-/***/ }),
-/* 335 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * 函数扩展:
- * 1.参数默认值
- * 2.rest参数
- * 3.扩展运算符
- * 4.箭头函数
- * 5.this绑定
- * 6.尾调用
- */
-
-{
-  // 参数默认值, 注： 默认值不能放在无默认值参数前面
-
-  var test = function test(x) {
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'world';
-
-    console.log('默认值 ', x, y);
-  };
-
-  test('hello'); // 默认值  hello world
-  test('hello', 'laosu'); // 默认值  hello laosu
-}
-
-{
-  var test2 = function test2(x) {
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
-
-    console.log('作用域：', x, y);
-  };
-
-  var a = 'test';
-
-  test2('kill'); // 作用域： kill kill
-  test2(); //  作用域： undefined undefined
-}
-
-{
-  // rest参数 注rest参数后不能再有别的参数
-  var test3 = function test3() {
-    for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
-      arg[_key] = arguments[_key];
+      console.log('keys', _key, _value2); // keys add
     }
-
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
+  } catch (err) {
+    _didIteratorError4 = true;
+    _iteratorError4 = err;
+  } finally {
     try {
-      for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var v = _step.value;
-
-        console.log('rest', v);
+      if (!_iteratorNormalCompletion4 && _iterator4.return) {
+        _iterator4.return();
       }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
     } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
+      if (_didIteratorError4) {
+        throw _iteratorError4;
       }
     }
-  };
+  }
 
-  test3('laosu', 'jake', 'wisdom', 'a');
+  _list4.forEach(function (item) {
+    console.log(item);
+  });
+}
+
+// WeakSet
+/**
+ * 1.只能是对象
+ * 2.对象是弱引用，不会去检测有没有被垃圾回收
+ */
+{
+  var weakList = new WeakSet();
+
+  var arg = {};
+
+  weakList.add(arg);
+  // weakList.add(2) // Uncaught TypeError: Invalid value used in weak set
+  console.log('weakList', weakList);
+
+  /**
+   * 1.没有size属性
+   * 2.没有clear方法
+   * 3.不能遍历
+   */
+}
+/**
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
+ */
+// Map
+{
+  var map = new Map();
+  var _arr4 = '123';
+  // let arr = ['123']
+
+  // 添加元素 map的元素key值可以是任何数据类型
+  map.set(_arr4, 456);
+  console.log('map', map, map.get(_arr4)); // Map(1) {Array(1) => 456} 456
 }
 
 {
-  var _console, _console2;
-
-  (_console = console).log.apply(_console, [1, 2, 4]); // 1 2 4
-  (_console2 = console).log.apply(_console2, ["a"].concat([1, 2, 3, 4])); // a 1 2 3 4
+  var _map = new Map([['a', 123], ['b', 456]]);
+  console.log('map args ', _map); // {"a" => 123, "b" => 456}
+  console.log('map size', _map.size);
+  console.log('map delete', _map.delete('a'), _map);
+  console.log('clear', _map.clear(), _map);
 }
 
+// WeakMap
 {
-  // 箭头函数
+  /**
+   * 同理，key值只能是对象
+   */
+  var weakmap = new WeakMap();
 
-  var arrow = function arrow(v) {
-    return v * 2;
-  };
-  console.log(arrow(3)); // 6
-
-  var arrow2 = function arrow2() {
-    return 5;
-  };
-  console.log(arrow2()); // 5
-}
-
-{
-  // 尾调用
-
-  // function tail(x) {
-  //   console.log('tail', x)
-  // }
-
-  // function fx(x) {
-  //   return tail(x)
-  // }
-
-  var tail = function tail(x) {
-    console.log('tail', x);
-  };
-  var fx = function fx(x) {
-    return tail(x);
-  };
-
-  fx(123); // tail 123
+  var o = {};
+  weakmap.set(o, 123);
+  console.log(weakmap.get(o));
 }
 
 /***/ })
