@@ -9587,185 +9587,239 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
- * 3-14类和对象
- * 1.基本方法
- * 2.类的继承
- * 3.静态方法
- * 4.静态属性
- * 5.getter
- * 6.setter
+ * 3-17Genertor 解决异步编程
+ * 
  */
 
-// 1.基本定义和生成实例
+// genertor 基本定义
 {
-  var Parent =
-  // 1.1: 构造函数
-  function Parent() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
+  var tell = /*#__PURE__*/regeneratorRuntime.mark(function tell() {
+    return regeneratorRuntime.wrap(function tell$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return 'a';
 
-    _classCallCheck(this, Parent);
+          case 2:
+            _context.next = 4;
+            return 'b';
 
-    this.name = name;
+          case 4:
+            return _context.abrupt('return', 'c');
+
+          case 5:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, tell, this);
+  });
+
+  var k = tell();
+  console.log(k.next()); // {value: "a", done: false}
+  console.log(k.next()); // {value: "b", done: false}
+  console.log(k.next()); // {value: "c", done: true}
+  console.log(k.next()); // {value: undefined, done: true}
+}
+
+{
+  var obj = {};
+  obj[Symbol.iterator] = /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    return regeneratorRuntime.wrap(function _callee$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return 1;
+
+          case 2:
+            _context2.next = 4;
+            return 2;
+
+          case 4:
+            _context2.next = 6;
+            return 3;
+
+          case 6:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee, this);
+  });
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = obj[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var value = _step.value;
+
+      console.log('value', value);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+}
+
+// 状态机
+{
+  var state = /*#__PURE__*/regeneratorRuntime.mark(function state() {
+    return regeneratorRuntime.wrap(function state$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            if (false) {
+              _context3.next = 9;
+              break;
+            }
+
+            _context3.next = 3;
+            return 'A';
+
+          case 3:
+            _context3.next = 5;
+            return 'B';
+
+          case 5:
+            _context3.next = 7;
+            return 'C';
+
+          case 7:
+            _context3.next = 0;
+            break;
+
+          case 9:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, state, this);
+  });
+  var status = state();
+  console.log(status.next());
+  console.log(status.next());
+  console.log(status.next());
+  console.log(status.next());
+  console.log(status.next());
+  console.log(status.next());
+}
+
+// 另一种写法
+// {
+//   let state = async function () {
+//     while(1){
+//       await 'A'
+//       await 'B'
+//       await 'C'
+//     }
+//   }
+//   let status = state()
+//   console.log(status.next())
+//   console.log(status.next())
+//   console.log(status.next())
+//   console.log(status.next())
+//   console.log(status.next())
+//   console.log(status.next())
+// }
+
+// 抽奖逻辑
+{
+  var draw = function draw(count) {
+    // 具体抽奖逻辑
+    console.info('\u5269\u4F59' + count + '\u6B21');
   };
 
-  var v_parent = new Parent('v');
-  console.log('构造函数实例：', v_parent);
+  // 次数的限制
+  var residue = /*#__PURE__*/regeneratorRuntime.mark(function residue(count) {
+    return regeneratorRuntime.wrap(function residue$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            if (!(count > 0)) {
+              _context4.next = 6;
+              break;
+            }
+
+            count--;
+            _context4.next = 4;
+            return draw(count);
+
+          case 4:
+            _context4.next = 0;
+            break;
+
+          case 6:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, residue, this);
+  });
+
+  // 此外参数正常情况下是由服务端传递
+  var star = residue(5);
+  var btn = document.createElement('button');
+  btn.id = 'start';
+  btn.textContent = '抽奖';
+  document.body.appendChild(btn);
+  document.getElementById('start').addEventListener('click', function () {
+    star.next();
+  }, false);
 }
 
-// 2.类的继承
+// 长轮询
 {
-  // 父类
-  var _Parent = function _Parent() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
+  var ajax = /*#__PURE__*/regeneratorRuntime.mark(function ajax() {
+    return regeneratorRuntime.wrap(function ajax$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return new Promise(function (resolve, reject) {
+              setTimeout(function () {
+                resolve({ code: 0 });
+              }, 200);
+            });
 
-    _classCallCheck(this, _Parent);
+          case 2:
+          case 'end':
+            return _context5.stop();
+        }
+      }
+    }, ajax, this);
+  });
 
-    this.name = name;
+  var pull = function pull() {
+    var genertor = ajax();
+    var step = genertor.next();
+    step.value.then(function (d) {
+      if (d.code != 0) {
+        setTimeout(function () {
+          console.info('wait');
+          pull();
+        }, 1000);
+      } else {
+        console.info(d);
+      }
+    });
   };
 
-  // 子类
-
-
-  var Child = function (_Parent2) {
-    _inherits(Child, _Parent2);
-
-    function Child() {
-      _classCallCheck(this, Child);
-
-      return _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).apply(this, arguments));
-    }
-
-    return Child;
-  }(_Parent);
-
-  console.log('继承：', new Child());
-}
-
-// 继承传递参数
-{
-  var _Parent3 = function _Parent3() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
-
-    _classCallCheck(this, _Parent3);
-
-    this.name = name;
-  };
-
-  var _Child = function (_Parent4) {
-    _inherits(_Child, _Parent4);
-
-    function _Child() {
-      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'child';
-      var type = arguments[1];
-
-      _classCallCheck(this, _Child);
-
-      // super 继承父类的属性以便修改，且要放在自定义参数前面
-      var _this2 = _possibleConstructorReturn(this, (_Child.__proto__ || Object.getPrototypeOf(_Child)).call(this, name));
-
-      _this2.type = type;
-      return _this2;
-    }
-
-    return _Child;
-  }(_Parent3);
-
-  console.log('继承：', new _Child('wisdom', '男'));
-}
-
-// getter, setter
-{
-  var _Parent5 = function () {
-    function _Parent5() {
-      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
-
-      _classCallCheck(this, _Parent5);
-
-      this.name = name;
-    }
-
-    // 属性
-
-
-    _createClass(_Parent5, [{
-      key: 'longName',
-      get: function get() {
-        return 'mk' + this.name;
-      },
-      set: function set(value) {
-        this.name = value;
-      }
-    }]);
-
-    return _Parent5;
-  }();
-
-  var v = new _Parent5();
-  console.log('getter', v.longName); // getter mklaosu
-  v.longName = 'hello';
-  console.log('setter', v.longName);
-}
-
-// 类的静态方法
-{
-  var _Parent6 = function () {
-    function _Parent6() {
-      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
-
-      _classCallCheck(this, _Parent6);
-
-      this.name = name;
-    }
-
-    // 静态方法
-
-
-    _createClass(_Parent6, null, [{
-      key: 'tell',
-      value: function tell() {
-        console.log('tell');
-      }
-    }]);
-
-    return _Parent6;
-  }();
-
-  _Parent6.tell();
-}
-
-// 类的静态属性
-{
-  var _Parent7 = function () {
-    function _Parent7() {
-      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'laosu';
-
-      _classCallCheck(this, _Parent7);
-
-      this.name = name;
-    }
-
-    _createClass(_Parent7, null, [{
-      key: 'tell',
-      value: function tell() {
-        console.log('tell');
-      }
-    }]);
-
-    return _Parent7;
-  }();
-
-  _Parent7.type = 'test';
-
-  console.log('静态属性：', _Parent7.type); // 静态属性： test
+  pull();
 }
 
 /***/ })
