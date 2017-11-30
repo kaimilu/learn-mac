@@ -9671,6 +9671,50 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
   }) || _class2;
 
   console.log('类修饰符：', _Test.myname);
+
+  // 第三方修饰器的js库：core-decorators; npm i core-decorators
+}
+
+{
+  var _dec, _dec2, _desc2, _value2, _class3;
+
+  var log = function log(type) {
+    return function (target, name, descriptor) {
+      var src_method = descriptor.value;
+      descriptor.value = function () {
+        for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
+          arg[_key] = arguments[_key];
+        }
+
+        src_method.apply(target, arg);
+        console.log('log ' + type);
+      };
+    };
+  };
+
+  var AD = (_dec = log('show'), _dec2 = log('click'), (_class3 = function () {
+    function AD() {
+      _classCallCheck(this, AD);
+    }
+
+    _createClass(AD, [{
+      key: 'show',
+      value: function show() {
+        console.info('ad is show');
+      }
+    }, {
+      key: 'click',
+      value: function click() {
+        console.info('ad is click');
+      }
+    }]);
+
+    return AD;
+  }(), (_applyDecoratedDescriptor(_class3.prototype, 'show', [_dec], Object.getOwnPropertyDescriptor(_class3.prototype, 'show'), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, 'click', [_dec2], Object.getOwnPropertyDescriptor(_class3.prototype, 'click'), _class3.prototype)), _class3));
+
+
+  var ad = new AD();
+  console.log(ad.show(), ad.click());
 }
 
 /***/ })
