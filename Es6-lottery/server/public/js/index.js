@@ -4000,6 +4000,8 @@ __webpack_require__(333);
 
 __webpack_require__(334);
 
+__webpack_require__(335);
+
 /***/ }),
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -10263,6 +10265,127 @@ console.log('================= 数组扩展 =================');
   // 是否包括某个元素
   console.log('number', [1, 2, NaN].includes(1)); // true
   console.log('number', [1, 2, NaN].includes(NaN)); // true
+}
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * 函数扩展:
+ * 1.参数默认值
+ * 2.rest参数
+ * 3.扩展运算符
+ * 4.箭头函数
+ * 5.this绑定
+ * 6.尾调用
+ */
+
+{
+  // 参数默认值, 注： 默认值不能放在无默认值参数前面
+
+  var test = function test(x) {
+    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'world';
+
+    console.log('默认值 ', x, y);
+  };
+
+  test('hello'); // 默认值  hello world
+  test('hello', 'laosu'); // 默认值  hello laosu
+}
+
+{
+  var test2 = function test2(x) {
+    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
+
+    console.log('作用域：', x, y);
+  };
+
+  var a = 'test';
+
+  test2('kill'); // 作用域： kill kill
+  test2(); //  作用域： undefined undefined
+}
+
+{
+  // rest参数 注rest参数后不能再有别的参数
+  var test3 = function test3() {
+    for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
+      arg[_key] = arguments[_key];
+    }
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var v = _step.value;
+
+        console.log('rest', v);
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  };
+
+  test3('laosu', 'jake', 'wisdom', 'a');
+}
+
+{
+  var _console, _console2;
+
+  (_console = console).log.apply(_console, [1, 2, 4]); // 1 2 4
+  (_console2 = console).log.apply(_console2, ["a"].concat([1, 2, 3, 4])); // a 1 2 3 4
+}
+
+{
+  // 箭头函数
+
+  var arrow = function arrow(v) {
+    return v * 2;
+  };
+  console.log(arrow(3)); // 6
+
+  var arrow2 = function arrow2() {
+    return 5;
+  };
+  console.log(arrow2()); // 5
+}
+
+{
+  // 尾调用
+
+  // function tail(x) {
+  //   console.log('tail', x)
+  // }
+
+  // function fx(x) {
+  //   return tail(x)
+  // }
+
+  var tail = function tail(x) {
+    console.log('tail', x);
+  };
+  var fx = function fx(x) {
+    return tail(x);
+  };
+
+  fx(123); // tail 123
 }
 
 /***/ })

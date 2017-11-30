@@ -3,5 +3,6 @@ import './class/lesson1.js' // 1.let const
 import './class/lesson2.js' // 2.解构赋值
 import './class/lesson3.js' // 3.正则扩展
 import './class/lesson4.js' // 4.字符串扩展（上）
-import './class/lesson5.js' // 4.数值扩展
-import './class/lesson6.js' // 4.数值扩展
+import './class/lesson5.js' // 5.数值扩展
+import './class/lesson6.js' // 6.数组扩展
+import './class/lesson7.js' // 7.函数扩展
