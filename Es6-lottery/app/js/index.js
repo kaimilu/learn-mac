@@ -14,4 +14,20 @@ import 'babel-polyfill'     // es7 兼容包
 // import './class/lesson13.js'  //13.Promise 异步编程
 // import './class/lesson14.js'  //14.Iterator 数据接口
 // import './class/lesson15.js'  //15.Genertor 异步编程
-import './class/lesson16.js'  //16.Decorators 修饰器 
+// import './class/lesson16.js'  //16.Decorators 修饰器 
+// import './class/lesson17.js'  //17. 模块化 
+
+/**
+ * import * as 别名 引入所有
+ * import 别名.xxx 引入默认项
+ * import {A} 引入指定项
+ */
+// import{ A, test, Hello} from './class/lesson17'
+// console.log(A, test, Hello)
+
+// import {A} from './class/lesson17'
+// import * as lesson from './class/lesson17'
+
+import lesson17 from './class/lesson17'
+
+console.log(lesson17.A)

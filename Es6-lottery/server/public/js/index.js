@@ -3988,7 +3988,41 @@ module.exports = __webpack_require__(125);
 
 __webpack_require__(126);
 
-__webpack_require__(329);
+var _lesson = __webpack_require__(329);
+
+var _lesson2 = _interopRequireDefault(_lesson);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log(_lesson2.default.A); // es7 兼容包
+// import './class/lesson1.js' // 1.let const
+// import './class/lesson2.js' // 2.解构赋值
+// import './class/lesson3.js' // 3.正则扩展
+// import './class/lesson4.js' // 4.字符串扩展（上）
+// import './class/lesson5.js' // 5.数值扩展
+// import './class/lesson6.js' // 6.数组扩展
+// import './class/lesson7.js' // 7.函数扩展
+// import './class/lesson8.js'   //  8.对象扩展
+// import './class/lesson9.js'   //  9.Symbol用法
+// import './class/lesson10.js'   //  10.set-map数据结构
+// import './class/lesson11.js'  //11.Proxy和Reflect 代理、反射
+// import './class/lesson12.js'  //12.类和对象
+// import './class/lesson13.js'  //13.Promise 异步编程
+// import './class/lesson14.js'  //14.Iterator 数据接口
+// import './class/lesson15.js'  //15.Genertor 异步编程
+// import './class/lesson16.js'  //16.Decorators 修饰器 
+// import './class/lesson17.js'  //17. 模块化 
+
+/**
+ * import * as 别名 引入所有
+ * import 别名.xxx 引入默认项
+ * import {A} 引入指定项
+ */
+// import{ A, test, Hello} from './class/lesson17'
+// console.log(A, test, Hello)
+
+// import {A} from './class/lesson17'
+// import * as lesson from './class/lesson17'
 
 /***/ }),
 /* 126 */
@@ -9587,135 +9621,56 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-  var desc = {};
-  Object['ke' + 'ys'](descriptor).forEach(function (key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
-
-  if ('value' in desc || desc.initializer) {
-    desc.writable = true;
-  }
-
-  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-    return decorator(target, property, desc) || desc;
-  }, desc);
-
-  if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
-  }
-
-  if (desc.initializer === void 0) {
-    Object['define' + 'Property'](target, property, desc);
-    desc = null;
-  }
-
-  return desc;
-}
-
 /**
- * 3-18Decorators 修饰器： 是一个函数修改类的行为
+ * 3-19模块化
  */
 
-// 限制某个属性是只读的
-{
-  var _desc, _value, _class;
+//  export let A=123
 
-  var readonly = function readonly(target, name, descriptor) {
-    descriptor.writable = false;
-    return descriptor;
-  };
+//  export function test() {
+//    console.log('test')
+//  }
 
-  var Test = (_class = function () {
-    function Test() {
-      _classCallCheck(this, Test);
+//  export class Hello {
+//    test() {
+//      console.log('class')
+//    }
+//  }
+
+var A = 123;
+
+var test = function test() {
+  console.log('test');
+};
+
+var Hello = function () {
+  function Hello() {
+    _classCallCheck(this, Hello);
+  }
+
+  _createClass(Hello, [{
+    key: 'test',
+    value: function test() {
+      console.log('class');
     }
+  }]);
 
-    _createClass(Test, [{
-      key: 'time',
-      value: function time() {
-        return '2017-11-30';
-      }
-    }]);
+  return Hello;
+}();
 
-    return Test;
-  }(), (_applyDecoratedDescriptor(_class.prototype, 'time', [readonly], Object.getOwnPropertyDescriptor(_class.prototype, 'time'), _class.prototype)), _class);
-
-
-  var test = new Test();
-
-  // test.time = () => console.log('ok') // Cannot assign to read only property 'time' of object
-  console.log(test.time()); // 2017-11-30
-}
-
-{
-  var _class2;
-
-  var typename = function typename(target, name, descriptor) {
-    target.myname = 'laosu';
-  };
-  var typename1 = function typename1(target, name, descriptor) {
-    target.myname = 'laosu';
-  };
-
-  // 在class 前面加， 对该类进行修饰
-  var _Test = typename(_class2 = function _Test() {
-    _classCallCheck(this, _Test);
-  }) || _class2;
-
-  console.log('类修饰符：', _Test.myname);
-
-  // 第三方修饰器的js库：core-decorators; npm i core-decorators
-}
-
-{
-  var _dec, _dec2, _desc2, _value2, _class3;
-
-  var log = function log(type) {
-    return function (target, name, descriptor) {
-      var src_method = descriptor.value;
-      descriptor.value = function () {
-        for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
-          arg[_key] = arguments[_key];
-        }
-
-        src_method.apply(target, arg);
-        console.log('log ' + type);
-      };
-    };
-  };
-
-  var AD = (_dec = log('show'), _dec2 = log('click'), (_class3 = function () {
-    function AD() {
-      _classCallCheck(this, AD);
-    }
-
-    _createClass(AD, [{
-      key: 'show',
-      value: function show() {
-        console.info('ad is show');
-      }
-    }, {
-      key: 'click',
-      value: function click() {
-        console.info('ad is click');
-      }
-    }]);
-
-    return AD;
-  }(), (_applyDecoratedDescriptor(_class3.prototype, 'show', [_dec], Object.getOwnPropertyDescriptor(_class3.prototype, 'show'), _class3.prototype), _applyDecoratedDescriptor(_class3.prototype, 'click', [_dec2], Object.getOwnPropertyDescriptor(_class3.prototype, 'click'), _class3.prototype)), _class3));
-
-
-  var ad = new AD();
-  console.log(ad.show(), ad.click());
-}
+exports.default = {
+  A: A,
+  test: test,
+  Hello: Hello
+};
 
 /***/ })
 /******/ ]);

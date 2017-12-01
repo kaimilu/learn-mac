@@ -35,6 +35,9 @@
 
    console.log('类修饰符：', Test.myname)
 
+   /**
+    * https://www.npmjs.com/package/core-decorators
+    */
    // 第三方修饰器的js库：core-decorators; npm i core-decorators
  }
 
