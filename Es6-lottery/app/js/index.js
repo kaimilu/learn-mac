@@ -28,6 +28,8 @@ import 'babel-polyfill'     // es7 兼容包
 // import {A} from './class/lesson17'
 // import * as lesson from './class/lesson17'
 
-import lesson17 from './class/lesson17'
+// import lesson17 from './class/lesson17'
 
-console.log(lesson17.A)
+// console.log(lesson17.A)
+
+import Lottery from './lottery'

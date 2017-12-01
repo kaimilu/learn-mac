@@ -3988,41 +3988,11 @@ module.exports = __webpack_require__(125);
 
 __webpack_require__(126);
 
-var _lesson = __webpack_require__(329);
+var _lottery = __webpack_require__(329);
 
-var _lesson2 = _interopRequireDefault(_lesson);
+var _lottery2 = _interopRequireDefault(_lottery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-console.log(_lesson2.default.A); // es7 兼容包
-// import './class/lesson1.js' // 1.let const
-// import './class/lesson2.js' // 2.解构赋值
-// import './class/lesson3.js' // 3.正则扩展
-// import './class/lesson4.js' // 4.字符串扩展（上）
-// import './class/lesson5.js' // 5.数值扩展
-// import './class/lesson6.js' // 6.数组扩展
-// import './class/lesson7.js' // 7.函数扩展
-// import './class/lesson8.js'   //  8.对象扩展
-// import './class/lesson9.js'   //  9.Symbol用法
-// import './class/lesson10.js'   //  10.set-map数据结构
-// import './class/lesson11.js'  //11.Proxy和Reflect 代理、反射
-// import './class/lesson12.js'  //12.类和对象
-// import './class/lesson13.js'  //13.Promise 异步编程
-// import './class/lesson14.js'  //14.Iterator 数据接口
-// import './class/lesson15.js'  //15.Genertor 异步编程
-// import './class/lesson16.js'  //16.Decorators 修饰器 
-// import './class/lesson17.js'  //17. 模块化 
-
-/**
- * import * as 别名 引入所有
- * import 别名.xxx 引入默认项
- * import {A} 引入指定项
- */
-// import{ A, test, Hello} from './class/lesson17'
-// console.log(A, test, Hello)
-
-// import {A} from './class/lesson17'
-// import * as lesson from './class/lesson17'
 
 /***/ }),
 /* 126 */
@@ -9621,56 +9591,105 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+__webpack_require__(330);
+
+__webpack_require__(331);
+
+__webpack_require__(332);
+
+__webpack_require__(333);
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * 3-19模块化
+ * 时间类
  */
 
-//  export let A=123
-
-//  export function test() {
-//    console.log('test')
-//  }
-
-//  export class Hello {
-//    test() {
-//      console.log('class')
-//    }
-//  }
-
-var A = 123;
-
-var test = function test() {
-  console.log('test');
-};
-
-var Hello = function () {
-  function Hello() {
-    _classCallCheck(this, Hello);
+var Timer = function () {
+  function Timer() {
+    _classCallCheck(this, Timer);
   }
 
-  _createClass(Hello, [{
-    key: 'test',
-    value: function test() {
-      console.log('class');
+  _createClass(Timer, [{
+    key: 'countdown',
+
+    /**
+    * 
+    * @param {结束时间} end 
+    * @param {时间更新的回调} updated 
+    * @param {倒计时结束后的回调} handle 
+    */
+    value: function countdown(end, updated, handle) {
+      var now = new Date().getTime(); // 当前时间的时间搓
+      var self = this;
+
+      if (now < end) {
+        handle.call(self); // 执行倒计时结束的回调
+      } else {
+        var last_time = end - now; // 计算剩余时间
+        var px_d = 1000 * 60 * 60 * 24; // 1天的毫秒数
+        var px_h = 1000 * 60 * 60; // 1小时毫秒数
+        var px_m = 1000 * 60; // 1分钟毫秒数
+        var px_s = 1000; // 1秒。。。。
+        var d = Math.floor(last_time / px_d); // 剩余多少天
+        var h = Math.floor((last_time - d * px_d) / px_h); // .......小时
+        var m = Math.floor((last_time - d * px_d - h * px_h) / px_m); // .......分钟
+        var s = Math.floor((last_time - d * px_d - h * px_h - m * px_m) / px_s); // .......秒
+        var r = [];
+        if (d > 0) {
+          r.push('<em>' + d + '</em>\u5929');
+        }
+        if (r.length || h > 0) {
+          r.push('<em>' + h + '</em>\u65F6');
+        }
+        if (r.length || m > 0) {
+          r.push('<em>' + m + '</em>\u5206');
+        }
+        if (r.length || s > 0) {
+          r.push('<em>${s}</em>');
+        }
+        self.last_time = r.join(''); // 赋值转换后的数据
+        updated.call(self, r.join('')); // 调用更新回调
+        setTimeout(function () {
+          // 一秒循环一次
+          self.countdown(end, updated, handle);
+        }, 1000);
+      }
     }
   }]);
 
-  return Hello;
+  return Timer;
 }();
 
-exports.default = {
-  A: A,
-  test: test,
-  Hello: Hello
-};
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /***/ })
 /******/ ]);
