@@ -3,8 +3,8 @@
 
 <template>
   <view class="container">
-    <panel>
-    </panel>
+    <!-- <panel>
+    </panel> -->
   </view>
 </template>
 
