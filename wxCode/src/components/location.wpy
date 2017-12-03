@@ -1,0 +1,46 @@
+<template>
+  <view class="location">
+    <view class="location-warp">
+      <label></label>
+      <text>定位地址</text>
+      <label>点击即送</label>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class Location extends wepy.component {
+
+}
+</script>
+
+<style lang='scss'>
+  .location{
+    &-warp{
+      width:680rpx;
+      height:100rpx;
+      background:#fff;
+      box-shadow: 0 0 5rpx #ccc;
+      margin: 16rpx auto;
+      border-radius: 5rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20rpx;
+      label{
+        &:nth-of-type(1){
+          width: 20rpx;
+          height: 20px;
+          background:pink;
+          margin-right: 10rpx;
+        }
+
+      }
+      text{
+        flex:1;
+        text-align:left;
+      }
+    }
+  }
+</style>

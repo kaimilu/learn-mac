@@ -1,0 +1,72 @@
+<style lang="scss">
+  .banner-slide{
+    width: 100%;
+    height: 200rpx;
+    background: pink;
+    image{
+      width: 100%;
+    }
+  }
+</style>
+<template>
+  <swiper class="banner-slide">
+    <block>
+      <swiper-item>
+        <image class="slide-img" title="title" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg" alt="" />
+      </swiper-item>
+      <swiper-item>
+        <text @tap="tap">{{title}}</text>
+      </swiper-item>
+    </block>
+  </swiper>
+</template>
+<script>
+import wepy from 'wepy'
+
+export default class BannerSlide extends wepy.component {
+  props = {
+    // 静态传值
+    title: String,
+    // 父向子单向传值
+    syncTitle: {
+      type: String,
+      default: 'null'
+    },
+    // 双向传值
+    twoWayTitle: {
+      type: Number,
+      default: 50,
+      twoWay: true
+    }
+  };
+  data = {}
+  methods = {
+    tap () {
+      console.log('mix tap')
+      this.$emit('childFn', 100)
+    }
+  }
+  onLoad() {
+    console.log(this.title) // laosu
+    console.log(this.syncTitle)
+    console.log(this.twoWayTitle)
+
+    console.info('修改后：')
+    this.title = 'c-title'
+    console.log(this.$parent.parentTitle)
+
+    this.syncTitle = 'c-title'
+    console.log(this.$parent.parentTitle)
+
+    this.twoWayTitle = 100
+    this.$apply()
+    console.log(this.$parent.parentTitle)
+
+    this.$parent.parentTitle = 'c-parent-changed'
+    this.$parent.$apply()
+    console.log(this.title)
+    console.log(this.syncTitle)
+    console.log(this.twoWayTitle)
+  }
+}
+</script>

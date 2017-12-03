@@ -1,0 +1,24 @@
+<style>
+
+</style>
+<template>
+  <nav></nav>
+</template>
+
+<script>
+import wepy from 'wepy'
+import nav from '@/components/navigator'
+
+export default class Center extends wepy.page {
+  components = {
+    nav
+  }
+  events = {
+    'index-emit': (...args) => {
+      let $event = args[args.length - 1]
+      console.log(...args, $event)
+      this.$navigate(args[0])
+    }
+  }
+}
+</script>

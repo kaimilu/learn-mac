@@ -24,53 +24,64 @@
 
     <panel>
       <view class="title" slot="title">测试数据绑定</view>
-
+      <view class="content" slot="content">
       <text class="info">{{normalTitle}}</text>
       <text class="info">{{setTimeoutTitle}}</text>
       <text class="info">{{mixin}}</text>
       <text class="info">{{mynum}}</text>
       <text class="info">{{now}}</text>
       <button @tap="plus('a')" size="mini">  +  </button>
+      </view>
     </panel>
 
     <panel>
       <view class="title" slot="title">其它测试</view>
+      <view slot="content">
       <button @tap="toast" size="mini">第三方组件</button>
       <button @tap="communicate" size="mini">组件通信</button>
       <button @tap="tap" size="mini">混合TAP事件</button>
+      </view>
     </panel>
 
     <panel>
       <view class="title" slot="title">测试并发网络请求</view>
+      <view slot="content">
       <view>返回结果: <text>{{netrst}}</text></view>
       <button @tap="request" size="mini"> 点我发起10个请求 </button>
+      </view>
     </panel>
 
     <panel>
       <view class="title" slot="title">测试组件</view>
-
+      <view slot="content">
       <text class="testcounter">计数组件1: </text>
       <view class="counterview">
         <counter1 @index-emit.user="counterEmit" />
       </view>
+      
 
       <text class="testcounter">计数组件2: </text>
-
+      
       <view class="counterview">
         <counter2 :num.sync="mynum"></counter2>
+      </view>
       </view>
     </panel>
 
     <panel>
       <view class="title" slot="title">测试组件Repeat</view>
+      <view slot="content">
       <repeat for="{{groupList}}" index="index" item="item" key="key">
         <group :grouplist="item" :indexa="index"></group>
       </repeat>
+      </view>
     </panel>
 
     <panel>
       <view class="title" slot="title">测试列表</view>
+      <view slot="content">
       <list></list>
+      </view>
     </panel>
 
     <toast />
@@ -86,9 +97,9 @@
   import Toast from 'wepy-com-toast'
   import testMixin from '../mixins/test'
 
-  export default class Index extends wepy.page {
+  export default class Index1 extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: '老苏你好'
     }
     components = {
       panel: Panel,

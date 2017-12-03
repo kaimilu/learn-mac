@@ -1,0 +1,91 @@
+<style lang="less">
+</style>
+
+<template>
+  <view class="container">
+    <banner @childFn.user="parentFn" :title="parentTitle" :title="parentTitle" :syncTitle.sync="parentTitle" :twoWayTitle="parentTitle" ></banner>
+    <!-- <panel>
+    </panel> -->
+    <panel>
+      <view class="title" slot="title">测试并发网络请求</view>
+      <view slot="content">
+      <view>返回结果: <text>{{netrst}}</text></view>
+      <button @tap="request" size="mini"> 点我发起10个请求 </button>
+      </view>
+    </panel>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  
+  import BannerSlide from '../components/bannerSlide'
+  // import List from '../components/list'
+  import Panel from '@/components/panel'
+  import Toast from 'wepy-com-toast'
+  import TestMixin from '../mixins/test.js'
+
+  // 通过继承自wepy.page的类创建页面逻辑
+  export default class Test extends wepy.page {
+    // 页面配置
+    conifg = {
+      navigationBarTitleText: '霸气蒸'
+    }
+
+    // 声明页面中将要使用到的组件
+    components = {
+      panel: Panel,
+      toast: Toast,
+      banner: BannerSlide
+    }
+    // 可用于页面模板绑定的数据
+    data = {
+      name: 'laosu',
+      userInfo: {},
+      parentTitle: 'p-title',
+      foo: 'foo defined by index',
+      netrst: ''
+    };
+    // 声明页面所引用的Mixin实例
+    mixins = [TestMixin]
+    // 事件处理函数(集中保存在methods对象中)
+    methods = {
+      parentFn(num, evt) {
+        console.log(evt)
+        console.log('parent received emit event, number is ' + num)
+      },
+      tap() {
+        console.log('index tap')
+      }
+    }
+    request () {
+      let self = this
+      let i = 10
+      let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
+      while (i--) {
+        wepy.request({
+          url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
+          success: function (d) {
+            self.netrst += d.data + '.'
+            self.$apply()
+          }
+        })
+      }
+    }
+    // 在Page和Component共用的生命周期函数
+    onLuch() {
+
+    }
+    // 只在Page中存在的页面生命周期函数
+    onShow() {
+      console.log(this.foo) // foo defined by index
+      console.log(this.bar) // bar defined by testMix
+    }
+    // 页面的生命周期函数
+    onLoad() {
+      console.log('index onShow')
+      // console.log('ok')
+      // this.$parent.testAsync()
+    }
+  }
+</script>

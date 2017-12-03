@@ -1,45 +1,48 @@
-<style lang="less">
+<style lang="scss">
+  .container{
+
+  } 
+
+  // banner
+  .banner {
+
+  }
 </style>
 
-<template>
-  <view class="container">
-    <!-- <panel>
-    </panel> -->
-  </view>
+<template class="container">
+  <location></location>
+  <banner></banner>
+  <prolist></prolist>
+  <nav></nav>
 </template>
 
 <script>
-  import wepy from 'wepy'
-  // import List from '../components/list'
-  import Panel from '@/components/panel'
-  import Toast from 'wepy-com-toast'
+import wepy from 'wepy'
+import location from '../components/location'
+import banner from '../components/bannerSlide'
+import prolist from '../components/proList'
+import nav from '@/components/navigator'
 
-  // 通过继承自wepy.page的类创建页面逻辑
-  export default class Index extends wepy.page {
-    // 页面配置
-    conifg = {
-      navigationBarTitleText: '霸气蒸'
-    }
+export default class Index extends wepy.page {
+  components = {
+    location,
+    banner,
+    prolist,
+    nav
+  }
 
-    // 声明页面中将要使用到的组件
-    components = {
-      panel: Panel,
-      toast: Toast
-    }
-    // 可用于页面模板绑定的数据
-    data = {
-      name: 'laosu',
-      userInfo: {}
-    };
+  methods = {
+    // go: (url) => {
+    //   this.$navigate(url)
+    // }
+  }
 
-    // 事件处理函数(集中保存在methods对象中)
-    methods = {
-
-    };
-
-    // 页面的生命周期函数
-    onLoad() {
-      console.log('ok')
+  events = {
+    'index-emit': (...args) => {
+      let $event = args[args.length - 1]
+      console.log(...args, $event)
+      this.$navigate(args[0])
     }
   }
+}
 </script>

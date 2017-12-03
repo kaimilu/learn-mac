@@ -1,0 +1,92 @@
+<style lang="scss">
+  .prolist{
+    background:#fff;
+
+    .item{
+      width: 710rpx;
+      margin: 0 auto;
+      padding: 40rpx 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      image{
+        width: 200rpx;
+        height: 200rpx;
+      }
+      &-info{
+        flex:1;
+        display: flex;
+        view{
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .title{
+            text{
+              width: 100%;
+              display:block;
+              padding: 0;
+            }
+            &-main{
+              font-size: 26rpx;
+            }
+            &-desc{
+              font-size: 20rpx;
+              color:#666;
+            }
+          }
+          .price{
+            font-size: 32rpx;
+            color:orange;
+          }
+          text{
+            padding: 0 20rpx;
+          }
+        }
+      }
+    }
+    .item + .item {
+      border-top: 1rpx #eee solid;
+    }
+  }
+</style>
+<template>
+  <view class="prolist">
+    <view class="item">
+      <view class="item-info">
+        <image src="https://zczj01.oss-cn-shenzhen.aliyuncs.com//friendlink/20170711/20170711110005.png"></image>
+        <view>
+          <text class="title">
+            <text class="title-main">主标题</text>
+            <text class="title-desc">描述</text>
+          </text>
+          <text class="price">¥48</text>
+        </view>
+      </view>
+      <view class="item-state">
+        <text class="state">不可配送</text>
+      </view>
+    </view>
+    <view class="item">
+      <view>
+        <image src="https://zczj01.oss-cn-shenzhen.aliyuncs.com//friendlink/20170711/20170711110005.png"></image>
+        <view>
+          <text class="title">标题</text>
+          <text class="price">¥48</text>
+        </view>
+      </view>
+      <view>
+        <text class="state">不可配送</text>
+      </view>
+    </view>
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class ProList extends wepy.component {
+
+}
+</script>

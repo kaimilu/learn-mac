@@ -2,7 +2,9 @@ import wepy from 'wepy'
 
 export default class testMixin extends wepy.mixin {
   data = {
-    mixin: 'This is mixin data.'
+    mixin: 'This is mixin data.',
+    foo: 'foo defined by testMix',
+    bar: 'bar defined by testMix'
   }
   methods = {
     tap () {
