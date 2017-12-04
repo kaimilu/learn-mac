@@ -22,16 +22,16 @@
 
 <template>
   <view class="nav">
-    <view class="item"  @tap="tap('./index')">
+    <view class="item" @tap = "chang(0,'./index')">
       <icon type="success"></icon>
       <text>Home</text>
     </view>
-    <view class="item" url="">
+    <view class="item" @tap = "chang(1)">
       <icon type="download"></icon>
       <text>Center</text>
     </view>
-    <view class="item" @tap="tap('./center')">
-      <icon type="success"></icon>
+    <view class="item">
+      <icon type="success" @tap = "chang(2,'./center')"></icon>
       <text>AboutUs</text>
     </view>
   </view>
@@ -41,7 +41,20 @@
 import wepy from 'wepy'
 
 export default class Navigator extends wepy.component {
+  prop = {
+    cur: {
+      twoWay: true
+    },
+    url: {
+      twoWay: true
+    }
+  }
   methods = {
+    chang (idx, url) {
+      this.cur = +idx
+      console.log(this.cur, url)
+      this.$parent.go(this.cur, url)
+    },
     tap (url) {
       console.log('tap')
       this.$emit('index-emit', url)

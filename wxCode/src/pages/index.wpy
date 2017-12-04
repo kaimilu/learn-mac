@@ -35,6 +35,11 @@ export default class Index extends wepy.page {
     // go: (url) => {
     //   this.$navigate(url)
     // }
+
+    go: (idx, url) => {
+      this.$navigate(url)
+      this.$apply()
+    }
   }
 
   events = {
