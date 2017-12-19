@@ -1,3 +1,5 @@
+import default from "./interface";
+
 /**
  * 时间类
  */
@@ -36,7 +38,7 @@ class Timer{
         r.push(`<em>${m}</em>分`)
       }
       if(r.length || s>0){
-        r.push('<em>${s}</em>')
+        r.push(`<em>${s}</em>秒`)
       }
       self.last_time = r.join('')   // 赋值转换后的数据
       updated.call(self,r.join('')) // 调用更新回调
@@ -46,3 +48,5 @@ class Timer{
     }
   }
 }
+
+export default Timer
